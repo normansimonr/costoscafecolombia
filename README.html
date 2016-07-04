@@ -120,16 +120,17 @@ $(document).ready(function () {
 
 <div id="costos-del-cafe-colombiano" class="section level1">
 <h1>Costos del café colombiano</h1>
-<p>En este documento hacemos un análisis breve de los precios del café colombiano y sus costos de producci?n. El artículo explicativo se encuentra en mi blog <a href="http://vasijadeideas.blogspot.com">Vasija de Ideas</a>. El software utilizado es R 3.2.2.</p>
+<p>En este documento hacemos un análisis breve de los precios del café colombiano y sus costos de producción. El artículo explicativo se encuentra en mi blog <a href="http://vasijadeideas.blogspot.com/2016/07/esta-gente-paga-para-que-la-dejen.html">Vasija de Ideas</a>. El software utilizado es R 3.2.2.</p>
+<p>Investigador: Norman Simón Rodríguez, MSc.</p>
 <div id="los-datos" class="section level2">
 <h2>Los datos</h2>
 <p>Los datos provienen de diversas fuentes:</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>Precio internacional del café:</strong> La información fue obtenida de la p?gina web de la Organizacién Internacional del Café (ICO, por sus siglas en inglés), y corresponde a los precios históricos de referencia para los cafés tipo suave colombiano (Colombian Milds). La tabla en Excel puede ser descargada desde <a href="http://www.ico.org/new_historical.asp" class="uri">http://www.ico.org/new_historical.asp</a>, y corresponde a la categoría “ICO Composite &amp; Group Indicator Prices - Monthly Averages”. La unidad es centavos de dólar por libra de 453.6 gramos (promedios mensuales). Nombre del archivo: “ico.csv”.</p></li>
 <li><p><strong>Precio interno del café en Colombia:</strong> Se descarg? una tabla de Excel de la página de la Federación Nacional de Cafeteros (<a href="http://www.federaciondecafeteros.org/particulares/es/quienes_somos/119_estadisticas_historicas/" class="uri">http://www.federaciondecafeteros.org/particulares/es/quienes_somos/119_estadisticas_historicas/</a>), correspondiente a la categoría “3. Precio interno base - mensual desde 1944”. Este precio <em>aparentemente no</em> incluye los subsidios gubernamentales al precio la AIC y el PIC (véase documentos “Precio café 2013.pdf” en la carpeta “data” y la captura de pantalla de <a href="https://pic.federaciondecafeteros.org/" class="uri">https://pic.federaciondecafeteros.org/</a> llamada “PIC 2014.pdf”). Este es el precio interno de referencia que paga la Federación a los cafeteros. La unidad es pesos colombianos por carga de 125 kilogramos (promedios mensuales). Nombre del archivo: “fedecafe.csv”.</p></li>
-<li><p><strong>Índice de precios al productor:</strong> Con este indicador podemos estimar los costos de producción de los caficultores para cada mes de la serie de tiempo. Fue obtenido de la página web del DANE: <a href="http://www.dane.gov.co/index.php/precios-e-inflacion/indice-de-precios-al-productor" class="uri">http://www.dane.gov.co/index.php/precios-e-inflacion/indice-de-precios-al-productor</a>, categor?a “Históricos”. Este índice corresponde al indicador de precios al productor para producción nacional en agricultura, ganadería, caza, silvicultura y pesca. Base diciembre 2014=100. Nombre del archivo “ipp.csv”.</p></li>
+<li><p><strong>Índice de precios al productor:</strong> Con este indicador podemos estimar los costos de producción de los caficultores para cada mes de la serie de tiempo. Fue obtenido de la página web del DANE: <a href="http://www.dane.gov.co/index.php/precios-e-inflacion/indice-de-precios-al-productor" class="uri">http://www.dane.gov.co/index.php/precios-e-inflacion/indice-de-precios-al-productor</a>, categoría “Históricos”. Este índice corresponde al indicador de precios al productor para producción nacional en agricultura, ganadería, caza, silvicultura y pesca. Base diciembre 2014=100. Nombre del archivo “ipp.csv”.</p></li>
 <li><p><strong>Tasa de cambio:</strong> Obtenida de la página del Banco de la República (<a href="http://www.banrep.gov.co/es/trm" class="uri">http://www.banrep.gov.co/es/trm</a>). Unidad: pesos por dólar estadounidense, promedio mensual. Nombre del archivo: “tcm.csv”.</p></li>
-<li><p>**Costo promedio de producción por carga de café*:** Este dato se obtuvo a partir de un derecho de petici?n respondido por la Federación Nacional de Cafeteros en el año 2013. Corresponde a 654459 pesos por carga de 125 kilogramos para el año 2012. Datos disponibles sobre demanda.</p></li>
+<li><p><strong>Costo promedio de producción por carga de café:</strong> Este dato se obtuvo a partir de un derecho de petici?n respondido por la Federación Nacional de Cafeteros en el año 2013. Corresponde a 654459 pesos por carga de 125 kilogramos para el año 2012. Datos disponibles sobre demanda.</p></li>
 </ol>
 </div>
 <div id="procesamiento" class="section level2">
@@ -178,7 +179,7 @@ datos$costokilo &lt;- costokilo
 
 datosnuevos &lt;- datos[,c(&quot;date&quot;, &quot;icopc&quot;, &quot;federak&quot;, &quot;costokilo&quot;)]
 datosnuevos$date &lt;- as.Date(datosnuevos$date)</code></pre>
-<p>Y ahora graficamos los datos:</p>
+<p>Y ahora graficamos los datos (para ver el gráfico, dirigirse al artículo del blog):</p>
 <pre class="r"><code>library(reshape)
 datosnuevos &lt;- melt(datosnuevos, id=&quot;date&quot;)
 

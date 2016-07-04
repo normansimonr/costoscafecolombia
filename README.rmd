@@ -1,5 +1,7 @@
 # Costos del café colombiano
-En este documento hacemos un análisis breve de los precios del café colombiano y sus costos de producci?n. El artículo explicativo se encuentra en mi blog [Vasija de Ideas](http://vasijadeideas.blogspot.com). El software utilizado es R 3.2.2.
+En este documento hacemos un análisis breve de los precios del café colombiano y sus costos de producción. El artículo explicativo se encuentra en mi blog [Vasija de Ideas](http://vasijadeideas.blogspot.com/2016/07/esta-gente-paga-para-que-la-dejen.html). El software utilizado es R 3.2.2.
+
+Investigador: Norman Simón Rodríguez, MSc.
 
 ## Los datos
 
@@ -9,11 +11,11 @@ Los datos provienen de diversas fuentes:
 
 2. **Precio interno del café en Colombia:** Se descarg? una tabla de Excel de la página de la Federación Nacional de Cafeteros (<http://www.federaciondecafeteros.org/particulares/es/quienes_somos/119_estadisticas_historicas/>), correspondiente a la categoría "3. Precio interno base - mensual desde 1944". Este precio *aparentemente no* incluye los subsidios gubernamentales al precio la AIC y el PIC (véase documentos "Precio café 2013.pdf" en la carpeta "data" y la captura de pantalla  de <https://pic.federaciondecafeteros.org/> llamada "PIC 2014.pdf"). Este es el precio interno de referencia que paga la Federación a los cafeteros. La unidad es pesos colombianos por carga de 125 kilogramos (promedios mensuales). Nombre del archivo: "fedecafe.csv".
 
-3. **Índice de precios al productor:** Con este indicador podemos estimar los costos de producción de los caficultores para cada mes de la serie de tiempo. Fue obtenido de la página web del DANE: <http://www.dane.gov.co/index.php/precios-e-inflacion/indice-de-precios-al-productor>, categor?a "Históricos". Este índice corresponde al indicador de precios al productor para producción nacional en agricultura, ganadería, caza, silvicultura y pesca. Base diciembre 2014=100. Nombre del archivo "ipp.csv".
+3. **Índice de precios al productor:** Con este indicador podemos estimar los costos de producción de los caficultores para cada mes de la serie de tiempo. Fue obtenido de la página web del DANE: <http://www.dane.gov.co/index.php/precios-e-inflacion/indice-de-precios-al-productor>, categoría "Históricos". Este índice corresponde al indicador de precios al productor para producción nacional en agricultura, ganadería, caza, silvicultura y pesca. Base diciembre 2014=100. Nombre del archivo "ipp.csv".
 
 4. **Tasa de cambio:** Obtenida de la página del Banco de la República (<http://www.banrep.gov.co/es/trm>). Unidad: pesos por dólar estadounidense, promedio mensual. Nombre del archivo: "tcm.csv".
 
-5. **Costo promedio de producción por carga de café*:** Este dato se obtuvo a partir de un derecho de petici?n respondido por la Federación Nacional de Cafeteros en el año 2013. Corresponde a 654459 pesos por carga de 125 kilogramos para el año 2012. Datos disponibles sobre demanda.
+5. **Costo promedio de producción por carga de café:** Este dato se obtuvo a partir de un derecho de petici?n respondido por la Federación Nacional de Cafeteros en el año 2013. Corresponde a 654459 pesos por carga de 125 kilogramos para el año 2012. Datos disponibles sobre demanda.
 
 ## Procesamiento
 
@@ -95,7 +97,7 @@ datosnuevos$date <- as.Date(datosnuevos$date)
 
 ```
 
-Y ahora graficamos los datos:
+Y ahora graficamos los datos (para ver el gráfico, dirigirse al artículo del blog):
 ```{r, warning=FALSE}
 
 library(reshape)
